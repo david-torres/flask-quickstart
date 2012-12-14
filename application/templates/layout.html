@@ -1,25 +1,33 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
     {% block head %}
     <meta charset="utf-8" />
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    {% assets filters="jsmin", output="min/plugins.js",
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='vendor/jquery/jquery-1.8.3.min.js') }}"><\/script>')</script>
+    {% assets filters="jsmin", output="min/main.js",
         'vendor/bootstrap/js/bootstrap.min.js',
+        'vendor/modernizr-2.6.2-respond-1.1.0.min.js',
         'vendor/jquery/plugins/tmpl.min.js'
     %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
 
-    <link rel="stylesheet" href="" type="text/css" />
-    <link rel="stylesheet" href="" type="text/css" />
     {% assets filters="cssmin", output="min/main.css",
       'vendor/bootstrap/css/bootstrap.min.css',
       'vendor/bootstrap/css/bootstrap-responsive.min.css'
     %}
-        <link rel="stylesheet" href="{{ ASSET_URL }}"  type="text/css" />
+        <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
     {% endassets %}
 
     <script id="alert-template" type="text/x-jquery-tmpl">
