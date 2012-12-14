@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block title %}Home{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <h2>Hello {% if current_user.is_authenticated() %}{{ current_user.username }}{% else %}World{% endif %}!</h2>
+{% endblock %}

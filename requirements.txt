@@ -1,0 +1,6 @@
+Flask
+Flask-Login
+Flask-Assets
+jsmin
+cssmin
+Flask-MongoEngine
