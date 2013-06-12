@@ -4,3 +4,4 @@ Flask-Assets
 jsmin
 cssmin
 Flask-MongoEngine
+gunicorn

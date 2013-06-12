@@ -13,7 +13,7 @@ from flask.ext.login import current_user
 
 
 @app.route('/')
-def index():
+def site_index():
     if current_user.is_authenticated():
         # redirect, load a different template...
         pass
@@ -21,7 +21,7 @@ def index():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def site_login():
     form = LoginForm()
     if form.validate_on_submit():
         try:
@@ -31,7 +31,7 @@ def login():
                 login_user(user)
                 flash('Logged in successfully.', 'success')
 
-                return redirect(request.args.get('next') or url_for('index'))
+                return redirect(request.args.get('next') or url_for('site_index'))
             else:
                 flash('Username or password is incorrect', 'error')
         except User.DoesNotExist:
@@ -41,13 +41,13 @@ def login():
 
 @app.route('/logout')
 @login_required
-def logout():
+def site_logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('site_index'))
 
 
 @app.route('/register', methods=['GET', 'POST'])
-def register():
+def site_register():
     form = LoginForm()
     if form.validate_on_submit():
         try:
@@ -64,5 +64,5 @@ def register():
             user.save()
 
             flash('Successfully registered', 'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('site_index'))
     return render_template('site/login.html', form=form)

@@ -3,3 +3,4 @@
 .env
 application/static/.webassets-cache/*
 application/static/min/*
+venv
